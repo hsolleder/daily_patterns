@@ -21,7 +21,6 @@
 #' @export
 #' @seealso clock::date_time_parse
 #'
-#'
 # Input can be *_date and *_time, or start_date directly
 # TODO: take care of case where start_time and/or end_time are missing
 raw_patterns <- function(
@@ -137,8 +136,8 @@ prepare_data <- function(
 
   x <- x |>
     dplyr::select(
-      all_of(c("start_date", "start_time", "end_date", "end_time")),
-      any_of(c("type", "quantity"))
+      tidyr::all_of(c("start_date", "start_time", "end_date", "end_time")),
+      tidyr::any_of(c("type", "quantity"))
     ) |>
     dplyr::filter(complete.cases(start_date, end_date, start_time, end_time))
 
