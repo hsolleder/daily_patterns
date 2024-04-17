@@ -17,15 +17,15 @@ check_required_colnames <- function(x,
                                     required_names,
                                     ...,
                                     case_sensitive = TRUE) {
-  
+
   rlang::check_dots_empty()
   x_names <- names(x)
-  
+
   if (!case_sensitive) {
     x_names <- tolower(x_names)
     required_names <- tolower(required_names)
   }
-  
+
   missing_names <- setdiff(required_names, x_names)
   if (length(missing_names) > 0) {
     stop(sprintf(
@@ -33,6 +33,6 @@ check_required_colnames <- function(x,
       paste(missing_names, collapse = ", ")
     ))
   }
-  
+
   return(invisible(NULL))
 }
